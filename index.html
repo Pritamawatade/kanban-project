@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>kanban project</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Kanban project</h1>
+      <button id="add-board-btn" class="btn">Add Board</button>
+    </header>
 
-</head>
-<body>
+    <div class="container" id="boards-container"></div>
 
-   <header>
-    <h1>Kanban project</h1>
-    <button id="add-board-btn" class="btn">Add Board</button>
-   </header>
-
-   <div class="container" id="boards-container"></div>
-
-   <div class="modal" id="task-modal">
-    <div class="modal-content">
+    <div class="modal" id="task-modal">
+      <div class="modal-content">
         <span class="close">&times;</span>
         <h2 id="modal-title">Add Task</h2>
-        
+        <form id="task-form">
+          <input type="hidden" id="edit-task-id" value="" />
+          <input type="hidden" id="edit-board-id" value="" />
+          <div class="form-group">
+            <label for="task-title">Title</label>
+            <input type="text" id="task-title" required />
+          </div>
+          <div class="form-group">
+            <label for="task-description">description</label>
+            <textarea id="task-description"></textarea>
+          </div>
+          <button type="submit" class="btn">Save</button>
+        </form>
+      </div>
     </div>
-   </div>
-    
-</body>
+
+    <!-- Board form popup -->
+    <div id="board-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add board</h2>
+        <form id="board-form">
+          <div class="form-group">
+            <label for="board-title">Board Titlle</label>
+            <input type="text" id="board-title" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="confirm-modal">
+      <div class="modal-content">
+        <h2>Confirm delete</h2>
+        <p id="confirm-message">Are you sure you want to delete this?</p>
+        <div class="modal-actions">
+          <button class="btn" id="confirm-cancle">Cancle</button>
+          <button class="btn btn-danger" id="confirm-delete">Danger</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+
+
+  </body>
 </html>
